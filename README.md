@@ -37,3 +37,18 @@
 4. 使用 v-for 循环渲染 每个 item 项
 
 ## 改造 九宫格 区域的样式
+
+- git init
+- git status
+- git add .
+- git status
+- git commit -m "init my project"
+
+- git config --global user.name ""
+- git config --global user.email ""
+
+- git remote add origin https://github.com/leilei1024/vue-num1.git
+- git push -u origin master
+- 或
+- git remote add origin https://github.com/leilei1024/vue-num1.git
+- git push -u origin master
