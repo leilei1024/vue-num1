@@ -39,6 +39,7 @@
 <style lang="scss" scoped>
 	.app-container {
 		padding-top: 2.5rem; //40px
+		padding-bottom: 3.125rem; //50px
 		overflow-x: hidden;//解决视觉
 	}
 	
