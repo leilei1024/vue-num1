@@ -2,9 +2,9 @@
 	<div class='cmt-container'>
 		<h3>评论子组件</h3>
 		<hr />
-		<textarea placeholder="请输入要评论的内容" maxlength="120"></textarea>
+		<textarea placeholder="请输入要评论的内容" maxlength="120" v-model="msg"></textarea>
 
-		<mt-button type='primary' size='large'>发表评论</mt-button>
+		<mt-button @click="postComment" type='primary' size='large' >发表评论</mt-button>
 		<div class='cmt-list'>
 
 			<div class='cmt-item' v-for="(item,i) in comments" :key="item.add_time">
@@ -46,7 +46,8 @@
 						add_time: "2019-04-16T03:50:28.000Z",
 						content: "我来了C"
 					}
-				]
+				],
+				msg:"" //输入内容
 			}
 		},
 		created() {
@@ -57,7 +58,6 @@
 				// this.$http.get("/api/getcomments/"+this.id+"?pageindex="+this.pageindex)
 				// .then(result => {
 				// 		if (result.body.status === 0) {
-				// 			// 如果没有失败，应该把数据保存到 data 上
 				// 			// this.comments = result.body.message;
 				// 			//老数据+新数据
 				// 			this.comments =this.comments.concat(result.body.message);
@@ -69,6 +69,31 @@
 			getMore(){//获取评论
 				// this.pageindex++;
 				// this.getComment();
+			},
+			postComment(){//发表评论
+				if (this.msg.trim().length === 0) {
+					return Toast("评论内容不能为空");
+				}
+				//参数1 请求的url
+				//参数2 提交给服务器的数据对象  ｛content: this.msg｝
+				//参数3 提交时候 表单数据格式 {emulateJSON:true} 
+				//下面可以实现 但是 api 不行
+				// this.$http.post('/api/postcomment/'+ this.$route.params.id,{
+				// 	content:this.msg.trim();
+				// })
+				// .then(result => {
+				// 		if (result.body.status === 0) {
+				// 			var cmt={
+				// 				user_name:"匿名用户",
+				// 				add_time:Date.now(),
+				// 				content:this.msg.trim()
+				// 			};
+				// 			this.comments.unshift(cmt);
+				// 			this.msg="";
+				// 		} else {
+				// 			Toast("发表评论失败！");
+				// 		}
+				// });
 			}
 			
 		},
